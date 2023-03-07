@@ -1,0 +1,4 @@
+POSTGRES_USER=postgres
+POSTGRES_PASSWORD=engineTest888
+POSTGRES_DB=zesty
+POSTGRES_HOST=postgres

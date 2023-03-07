@@ -1,0 +1,30 @@
+version: '3'
+
+services:
+  postgres:
+    image: postgis/postgis:13-master
+    restart: always
+    ports:
+      - "5555:5432"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: engineTest888
+      POSTGRES_DB: zesty
+    volumes:
+      - ./init-db/:/docker-entrypoint-initdb.d/
+      - pg-data:/var/lib/postgresql/data
+  api:
+    build: api/.
+    ports:
+      - "8080:8080"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: engineTest888
+      POSTGRES_DB: zesty
+      POSTGRES_HOST: host.docker.internal
+    depends_on:
+      - postgres
+    links:
+      - postgres
+volumes:
+  pg-data:
