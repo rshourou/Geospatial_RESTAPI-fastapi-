@@ -8,8 +8,8 @@
 The goal is to create a RESTful API (see [API Specification](#api-specification)) written in 
 Python that can locate and manipulate images and geographical data. I'll use property 
 data stored in an SQL database and images stored in cloud storage (See [Feature List](#feature-list)). 
-The API should be packaged as a containerized service. A test property database and images are provided 
-for you (see [Setup](#setup)).
+The API is packaged as a containerized service. A test property database and images are provided 
+in [Setup](#setup).
 
 
 ## Feature list
@@ -37,9 +37,6 @@ for you (see [Setup](#setup)).
     meters around the `geocode_geo` point. Then, calculate the percentage of that zone geography 
     which has buildings in it. 
   
-* **Freestyle:**  Based on the other features, you should have a feel for the kind  
-  of features this API implements. If you have other cool ideas of things to add that aren't listed here, 
-  we'd love to see them.
 
 ## Setup
 
@@ -61,18 +58,12 @@ pointing to an image on [Google Cloud Storage](https://cloud.google.com/storage/
 
 
 ## API Specification
-The API must adhere to the following API specification.
-
-Note that this includes the specification for all endpoints. 
-Ignore the ones for features that are not implemented in the submission.
-
-***
 
 ### GET /display/:id
 
 *Fetches and displays property image (as JPEG) by ID* 
 
-`example: GET localhost:1235/display/f853874999424ad2a5b6f37af6b56610`
+`example: GET localhost:8080/display/f853874999424ad2a5b6f37af6b56610`
 
 ##### Request Parameters
 - `id` | description: Property ID | type: string | required: true 
@@ -85,7 +76,7 @@ JPEG image
 ### POST /find
 *Finds properties within X meters away from provided geojson point.*
 
-`example: POST localhost:1235/find`
+`example: POST localhost:8080/find`
 
 ##### Request Body
 JSON object with the following properties
